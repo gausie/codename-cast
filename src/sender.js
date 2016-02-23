@@ -1,5 +1,5 @@
 /* global chrome */
-// import { applicationId } from './config.json';
+import { applicationId } from './config.json';
 import loader from './loader.js';
 
 function handleError(errorInfo) {
@@ -20,8 +20,6 @@ function initialize() {
   if (!chrome.cast || !chrome.cast.isAvailable) {
     return Promise.reject('Cannot load Cast API');
   }
-
-  const applicationId = chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID;
 
   const sessionRequest = new chrome.cast.SessionRequest(applicationId);
   const apiConfig = new chrome.cast.ApiConfig(sessionRequest, sessionListener, receiverListener);
